@@ -1,4 +1,6 @@
+
 <template>
+<div>
 	<div class="login">
 		<h1 v-text="title"></h1>
 	</div>
@@ -13,6 +15,7 @@
 			<button v-on:click="loginAttempt">Login</button>
 		</form>
 	</div>
+</div>
 </template>
 
 </template>
