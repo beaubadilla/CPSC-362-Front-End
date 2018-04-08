@@ -4,7 +4,11 @@
     <h1 v-text="title"></h1>
   </div>
   <div>
+<<<<<<< HEAD
     <form class="login-box">
+=======
+    <form>
+>>>>>>> b8437ac6e1faa54b049bb341882fac76aa4c2c27
     <p v-text="emailTitle"></p>
       <input type="text" v-model="email" v-on:keyup.enter="loginAttempt">
       <p v-text="passwordTitle"></p>
@@ -45,6 +49,7 @@ export default {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 .login{
   margin-top: 225px;          /* Probably not the best way to do the margins, but it works for now...*/
   text-align: center;
@@ -64,4 +69,6 @@ export default {
     box-sizing: border-box;
     padding: 30px 20px;
 }
+=======
+>>>>>>> b8437ac6e1faa54b049bb341882fac76aa4c2c27
 </style>
