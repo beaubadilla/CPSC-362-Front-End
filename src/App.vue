@@ -1,21 +1,12 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
-    <!--<Login></Login>-->
-    <Register></Register>
-   <!--<router-view/>-->
+   <router-view/>
   </div>
 </template>
 
 <script>
-import Login from './components/Login'
-import Register from './components/Register'
 export default {
-  name: 'App',
-  components: {
-    Login,
-    Register
-  }
+  name: 'App'
 }
 </script>
 
