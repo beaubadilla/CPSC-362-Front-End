@@ -6,6 +6,8 @@
   </div>
   <div>
     <form class="login-box">
+      <p v-text="nameTitle"></p>
+      <input type="text" v-model="name" v-on:keyup.enter="loginAttempt">
     <p v-text="emailTitle"></p>
       <input type="text" v-model="email" v-on:keyup.enter="loginAttempt">
       <p v-text="passwordTitle"></p>
@@ -21,10 +23,11 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
     return {
-      title: 'Login',
+      title: 'Register',
+      nameTitle: 'Name',
       emailTitle: 'Email',
       passwordTitle: 'Password',
       forgotPasswordTitle: 'Forgot Password?',
@@ -49,7 +52,7 @@ export default {
 <style scoped>
 .test {
 background-size:cover;
-background-color: grey;
+background-color: black;
 }
 .test2 {/*Login Title*/
 margin-top: 225px;
