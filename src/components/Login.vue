@@ -11,7 +11,6 @@
       <p v-text="passwordTitle"></p>
       <input type="text" v-model="password" v-on:keyup.enter="loginAttempt">
       <p v-text="forgotPasswordTitle"></p>
-      <p v-text="alreadyMemberTitle"></p>
       <button v-on:click="loginAttempt">Login</button>
     </form>
   </div>
@@ -28,9 +27,7 @@ export default {
       emailTitle: 'Email',
       passwordTitle: 'Password',
       forgotPasswordTitle: 'Forgot Password?',
-      alreadyMemberTitle: 'Already a member?',
-      email: '',
-      testVar: ''
+      email: ''
     }
   },
   methods: {

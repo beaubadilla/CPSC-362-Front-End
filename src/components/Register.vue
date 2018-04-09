@@ -7,14 +7,14 @@
   <div>
     <form class="login-box">
       <p v-text="nameTitle"></p>
-      <input type="text" v-model="name" v-on:keyup.enter="loginAttempt">
+      <input type="text" v-model="name" v-on:keyup.enter="registerAttempt">
     <p v-text="emailTitle"></p>
-      <input type="text" v-model="email" v-on:keyup.enter="loginAttempt">
+      <input type="text" v-model="email" v-on:keyup.enter="registerAttempt">
       <p v-text="passwordTitle"></p>
-      <input type="text" v-model="password" v-on:keyup.enter="loginAttempt">
+      <input type="text" v-model="password" v-on:keyup.enter="registerAttempt">
       <p v-text="forgotPasswordTitle"></p>
-      <p v-text="alreadyMemberTitle"></p>
-      <button v-on:click="loginAttempt">Login</button>
+      <a href="/">{{alreadyMemberTitle}}</a>
+      <button v-on:click="registerAttempt">Login</button>
     </form>
   </div>
 </div>
@@ -28,17 +28,18 @@ export default {
     return {
       title: 'Register',
       nameTitle: 'Name',
+      name: '',
       emailTitle: 'Email',
-      passwordTitle: 'Password',
-      forgotPasswordTitle: 'Forgot Password?',
-      alreadyMemberTitle: 'Already a member?',
       email: '',
-      testVar: ''
+      passwordTitle: 'Password',
+      password: '',
+      forgotPasswordTitle: 'Forgot Password?',
+      alreadyMemberTitle: 'Already a member?'
     }
   },
   methods: {
-    loginAttempt: function () {
-      // request?
+    registerAttempt: function (name, email, password) {
+      this.axios.post('titannotes.jonmouchou.com/api/auth/register', {name}, {email}, {password}).then(function (response) { console.log(response) })
     }
   },
   mounted () {
