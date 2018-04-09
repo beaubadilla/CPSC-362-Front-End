@@ -7,11 +7,11 @@
   <div>
     <form class="login-box">
     <p v-text="emailTitle"></p>
-      <input type="text" v-model="email" v-on:keyup.enter="loginAttempt">
+      <input type="text" v-model="email">
       <p v-text="passwordTitle"></p>
-      <input type="text" v-model="password" v-on:keyup.enter="loginAttempt">
+      <input type="text" v-model="password">
       <p v-text="forgotPasswordTitle"></p>
-      <button v-on:click="loginAttempt">Login</button>
+      <button v-on:click="post">Login</button>
     </form>
   </div>
 </div>
@@ -25,20 +25,21 @@ export default {
     return {
       title: 'Login',
       emailTitle: 'Email',
+      email: '',
       passwordTitle: 'Password',
-      forgotPasswordTitle: 'Forgot Password?',
-      email: ''
+      password: '',
+      forgotPasswordTitle: 'Forgot Password?'
     }
   },
   methods: {
-    loginAttempt: function () {
-      // request?
+    post: function () {
+      this.axios.post('http://titannotes.jonmouchou.com/api/auth/login', {
+        email: this.email,
+        password: this.password
+      }).then((response) => {
+        console.log(response)
+      })
     }
-  },
-  mounted () {
-    this.axios.get('https://jsonplaceholder.typicode.com/posts/1').then((response) => {
-      console.log(response)
-    })
   }
 }
 </script>
