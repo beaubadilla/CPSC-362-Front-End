@@ -7,14 +7,14 @@
   <div>
     <form class="login-box">
       <p v-text="nameTitle"></p>
-      <input type="text" v-model="name" v-on:keyup.enter="registerAttempt">
+      <input type="text" v-model="name" v-on:keyup.enter="post">
     <p v-text="emailTitle"></p>
-      <input type="text" v-model="email" v-on:keyup.enter="registerAttempt">
+      <input type="text" v-model="email" v-on:keyup.enter="post">
       <p v-text="passwordTitle"></p>
-      <input type="text" v-model="password" v-on:keyup.enter="registerAttempt">
+      <input type="text" v-model="password" v-on:keyup.enter="post">
       <p v-text="forgotPasswordTitle"></p>
       <a href="/">{{alreadyMemberTitle}}</a>
-      <button v-on:click="registerAttempt">Login</button>
+      <button v-on:click="post">Login</button>
     </form>
   </div>
 </div>
@@ -38,16 +38,18 @@ export default {
     }
   },
   methods: {
-    registerAttempt: function (name, email, password) {
-      this.axios.post('titannotes.jonmouchou.com/api/auth/register', {name}, {email}, {password}).then(function (response) { console.log(response) })
+    post: function () {
+      this.axios.post('titannotes.jonmouchou.com/api/auth/register', {
+        name: this.name,
+        email: this.email,
+        passwordword: this.password
+      }).then(function (data) {
+        console.log(data)
+      })
     }
-  },
-  mounted () {
-    this.axios.get('https://jsonplaceholder.typicode.com/posts/1').then((response) => {
-      console.log(response)
-    })
   }
 }
+
 </script>
 
 <style scoped>
