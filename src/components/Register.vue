@@ -12,6 +12,8 @@
       <input type="text" v-model="email" v-on:keyup.enter="post">
       <p v-text="passwordTitle"></p>
       <input type="text" v-model="password" v-on:keyup.enter="post">
+      <p v-text="confirmPasswordTitle"></p>
+      <input type="text" v-model="confirmPassword">
       <p v-text="forgotPasswordTitle"></p>
       <a href="/">{{alreadyMemberTitle}}</a>
       <button v-on:click="post">Login</button>
@@ -33,16 +35,19 @@ export default {
       email: '',
       passwordTitle: 'Password',
       password: '',
+      confirmPasswordTitle: 'Confirm Password',
+      confirmPassword: '',
       forgotPasswordTitle: 'Forgot Password?',
       alreadyMemberTitle: 'Already a member?'
     }
   },
   methods: {
     post: function () {
-      this.axios.post('titannotes.jonmouchou.com/api/auth/register', {
+      this.axios.post('http://titannotes.jonmouchou.com/api/auth/register', {
         name: this.name,
         email: this.email,
-        passwordword: this.password
+        password: this.password,
+        password_confirmation: this.confirmPassword
       }).then(function (data) {
         console.log(data)
       })
