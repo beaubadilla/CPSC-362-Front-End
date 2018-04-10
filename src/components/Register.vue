@@ -1,25 +1,33 @@
 <template>
-<div class="test">
-<div>
-  <div class="login">
-    <h1 class="test2" v-text="title"></h1>
-  </div>
-  <div>
-    <form class="login-box">
-      <p v-text="nameTitle"></p>
-      <input type="text" v-model="name" v-on:keyup.enter="post">
-    <p v-text="emailTitle"></p>
-      <input type="text" v-model="email" v-on:keyup.enter="post">
-      <p v-text="passwordTitle"></p>
-      <input type="text" v-model="password" v-on:keyup.enter="post">
-      <p v-text="confirmPasswordTitle"></p>
-      <input type="text" v-model="confirmPassword">
-      <p v-text="forgotPasswordTitle"></p>
-      <a href="/">{{alreadyMemberTitle}}</a>
-      <button v-on:click="post">Login</button>
-    </form>
-  </div>
-</div>
+<div id="app">
+  <v-app id="inspire">
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center>
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-toolbar dark color="blue accent-3">
+                <v-toolbar-title>Register</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field v-model="name" prepend-icon="person" name="Name" label="Name" type="text"></v-text-field>
+                  <v-text-field v-model="email" prepend-icon="person" name="login" label="Student Email" type="text"></v-text-field>
+                  <v-text-field v-model="password" prepend-icon="lock" name="password" label="Password" id="password" type="password"></v-text-field>
+                  <v-text-field v-model="confirmPassword" prepend-icon="lock" name="confirmPassword" label="Confirm Password" id="confirmPassword" type="password"></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn v-on:click="post" color="orange accent-3">Register</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </div>
 </template>
 
@@ -58,47 +66,4 @@ export default {
 </script>
 
 <style scoped>
-.test {
-background-size:cover;
-background-color: black;
-}
-.test2 {/*Login Title*/
-margin-top: 225px;
-text-align: center;
-font-size: 36px;
-font-family: sans-serif;
-color:orange;
-border: solid black;
-}
-.login-box {
-width: 500px;
-height: 380px;
-background: rgba(0, 0, 0, 0.5);
-color: white;
-position: absolute;
-top: 55%;
-left: 50%;
-transform: translate(-50%, -50%);
-box-sizing: border-box;
-padding: 30px 20px;
-}
-.login-box p{
-margin: 0;
-padding: 5;
-font-weight: bold;
-}
-.login-box input {
-width: 100%;
-margin-bottom: 20px;
-}
-.login-box button {
-width: 100%;
-border: none;
-outline: none;
-height: 40px;
-background: royalBlue;
-color: white;
-font-size: 18px;
-border-raidus: 20px;
-}
 </style>
