@@ -6,9 +6,10 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-//import Vuetify from 'vuetify'
-//import 'vuetify/dist/vuetify.min.css'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
+Vue.use(Vuetify)
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
 
