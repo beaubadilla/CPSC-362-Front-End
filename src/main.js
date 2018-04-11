@@ -8,6 +8,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import {store} from './store/store'
 
 Vue.use(Vuetify)
 Vue.use(VueAxios, axios);
@@ -18,5 +19,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store:store
 })

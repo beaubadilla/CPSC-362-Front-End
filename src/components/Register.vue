@@ -13,13 +13,14 @@
               <v-card-text>
                 <v-form>
                   <v-text-field v-model="name" prepend-icon="person" name="Name" label="Name" type="text"></v-text-field>
-                  <v-text-field v-model="email" prepend-icon="person" name="login" label="Student Email" type="text"></v-text-field>
-                  <v-text-field v-model="password" prepend-icon="lock" name="password" label="Password" id="password" type="password"></v-text-field>
-                  <v-text-field v-model="confirmPassword" prepend-icon="lock" name="confirmPassword" label="Confirm Password" id="confirmPassword" type="password"></v-text-field>
+                  <v-text-field v-model="email" prepend-icon="person" name="login" label="Student Email" type="text" placeholder="@csu.fullerton.edu"></v-text-field>
+                  <v-text-field v-model="password" prepend-icon="lock" name="password" label="Password" id="password" type="password" placeholder="6 characters minimum"></v-text-field>
+                  <v-text-field v-model="confirmPassword" prepend-icon="lock" name="confirmPassword" label="Confirm Password" id="confirmPassword" type="password" placeholder="6 characters minimum"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
+                <span>Already a member?</span>
                 <v-btn v-on:click="post" color="orange accent-3">Register</v-btn>
               </v-card-actions>
             </v-card>
@@ -33,20 +34,12 @@
 
 <script>
 export default {
-  name: 'Register',
   data () {
     return {
-      title: 'Register',
-      nameTitle: 'Name',
       name: '',
-      emailTitle: 'Email',
       email: '',
-      passwordTitle: 'Password',
       password: '',
-      confirmPasswordTitle: 'Confirm Password',
-      confirmPassword: '',
-      forgotPasswordTitle: 'Forgot Password?',
-      alreadyMemberTitle: 'Already a member?'
+      confirmPassword: ''
     }
   },
   methods: {

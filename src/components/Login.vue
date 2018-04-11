@@ -12,13 +12,14 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field v-model="email" prepend-icon="person" name="login" label="User" type="text"></v-text-field>
+                  <v-text-field v-model="email" prepend-icon="person" name="login" label="User" type="text" placeholder="@csu.fullerton.edu"></v-text-field>
                   <v-text-field v-model="password" prepend-icon="lock" name="password" label="Password" id="password" type="password"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn v-on:click ="post" color="orange accent-3">Login</v-btn>
+                <span>Sign Up</span>
+                <v-btn v-on:click="post" color="orange accent-3">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -31,15 +32,11 @@
 
 <script>
 export default {
-  name: 'Login',
   data () {
     return {
       title: 'Login',
-      emailTitle: 'Email',
       email: '',
-      passwordTitle: 'Password',
-      password: '',
-      forgotPasswordTitle: 'Forgot Password?'
+      password: ''
     }
   },
   methods: {
@@ -48,6 +45,12 @@ export default {
         email: this.email,
         password: this.password
       }).then((response) => {
+        this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password
+        }).then(() => {
+          this.$router.push('/dashboard')
+        })
         console.log(response)
       })
     }
