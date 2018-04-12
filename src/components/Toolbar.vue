@@ -108,7 +108,7 @@ export default {
         model: true,
         children: [
           { href: '/examplecard', text: 'Software Engineering' },
-          { href: '/notesExample', text: 'Random notes' },
+          { href: '/NotesExample', text: 'Random notes' },
           { icon: 'add', text: 'Create label' }
         ]
       },
