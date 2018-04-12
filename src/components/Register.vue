@@ -20,7 +20,9 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <router-link to="/">Already a member?</router-link>
+                <router-link to="/">
+                  <span>Already a member?</span>
+                </router-link>
                 <v-btn v-on:click="post" color="orange accent-3">Register</v-btn>
               </v-card-actions>
             </v-card>
@@ -43,17 +45,27 @@ export default {
     }
   },
   methods: {
+    checkCurrentLogin () {
+      if (this.$store.getters.isLoggedIn) {
+        this.$router.replace(this.$route.query.redirect || '/dashboard')
+      }
+    },
     post: function () {
       this.axios.post('http://titannotes.jonmouchou.com/api/auth/register', {
         name: this.name,
         email: this.email,
         password: this.password,
         password_confirmation: this.confirmPassword
-      }).then((response) => {
-        this.$router.push('/')
-        console.log(response)
+      }).then(function (data) {
+        console.log(data)
       })
     }
+  },
+  updated () {
+    this.checkCurrentLogin()
+  },
+  created () {
+    this.checkCurrentLogin()
   }
 }
 

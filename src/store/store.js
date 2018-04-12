@@ -9,7 +9,7 @@ const LOGOUT = 'LOGOUT'
 
 export const store = new Vuex.Store({
   state: { // data you want to share among components
-    isLoggedIn: !!localStorage.getItem('token')
+    isLoggedIn: localStorage.getItem('token')
   },
   mutations: {
     [LOGIN] (state) {

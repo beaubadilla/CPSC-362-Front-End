@@ -52,7 +52,7 @@
               </v-list-tile-content>
             </v-list-tile>
           </v-list-group>
-          <v-list-tile v-else :key="item.text">
+          <v-list-tile v-else :to="item.href" :key="item.text">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -87,7 +87,7 @@
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
-          <router-view/>
+      <router-view/>
     </v-content>
   </v-app>
 </template>
@@ -98,7 +98,7 @@ export default {
     dialog: false,
     drawer: null,
     items: [
-      { icon: 'lightbulb_outline', text: 'Notes' },
+      { icon: 'lightbulb_outline', text: 'Personal Notes' },
       { icon: 'touch_app', text: 'Reminders' },
       { divider: true },
       {
@@ -108,13 +108,13 @@ export default {
         model: true,
         children: [
           { href: '/examplecard', text: 'Software Engineering' },
-          { href: '/NotesExample', text: 'Random notes' },
+          { href: '/notesExample', text: 'Random notes' },
           { icon: 'add', text: 'Create label' }
         ]
       },
       { divider: true },
       { icon: 'settings', text: 'Settings' },
-      { icon: 'lock', text: 'Log out' }
+      { href: '/logout', icon: 'lock', text: 'Log out' }
     ]
   }),
   props: {
