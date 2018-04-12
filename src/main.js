@@ -9,9 +9,10 @@ import VueAxios from 'vue-axios'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import {store} from './store/store'
-
+import VeeValidate from 'vee-validate'
 Vue.use(Vuetify)
-Vue.use(VueAxios, axios);
+Vue.use(VueAxios, axios)
+Vue.use(VeeValidate)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
