@@ -20,7 +20,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <span>Already a member?</span>
+                <router-link to="/">Already a member?</router-link>
                 <v-btn v-on:click="post" color="orange accent-3">Register</v-btn>
               </v-card-actions>
             </v-card>
@@ -49,8 +49,9 @@ export default {
         email: this.email,
         password: this.password,
         password_confirmation: this.confirmPassword
-      }).then(function (data) {
-        console.log(data)
+      }).then((response) => {
+        this.$router.push('/')
+        console.log(response)
       })
     }
   }
