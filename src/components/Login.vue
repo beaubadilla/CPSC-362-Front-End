@@ -21,9 +21,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <router-link to="/register">
-                  <span>Sign Up</span>
-                </router-link>
+                <router-link to="/register">Sign Up</router-link>
                 <v-btn v-on:click="post" color="orange accent-3">Login</v-btn>
               </v-card-actions>
             </v-card>
