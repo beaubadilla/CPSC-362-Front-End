@@ -6,6 +6,7 @@ import Register from '@/components/Register'
 import Toolbar from '@/components/Toolbar'
 import Examplecard from '@/components/examplecard'
 import NotesExample from '@/components/NotesExample'
+import NewCategory from '@/components/NewCategory'
 import Logout from '@/components/Logout'
 
 Vue.use(Router)
@@ -36,6 +37,11 @@ export default new Router({
           path: '/NotesExample',
           name: 'NotesExample',
           component: NotesExample
+        },
+        {
+          path: '/NewCategory',
+          name: 'NewCategory',
+          component: NewCategory
         }
       ]
     },
