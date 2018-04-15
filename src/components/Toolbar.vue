@@ -109,7 +109,7 @@ export default {
         children: [
           { href: '/examplecard', text: 'Software Engineering' },
           { href: '/NotesExample', text: 'Random notes' },
-          { href: '/NewCategory', icon: 'add', text: 'Create New Category' },
+          { href: '/NewCategory', icon: 'add', text: 'Create New Category' }
         ]
       },
       { divider: true },
