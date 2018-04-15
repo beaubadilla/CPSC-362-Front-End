@@ -88,6 +88,38 @@
     </v-toolbar>
     <v-content>
       <router-view/>
+
+      <v-layout row justify-center>
+        <v-btn color="blue" flat @click.stop="newCategory = true">Create New Category</v-btn>
+        <v-dialog v-model="newCategory" max-width="500px">
+          <v-card>
+            <v-card-title>
+              New Category
+            </v-card-title>
+            <v-container fluid>
+              <v-layout column>
+                <v-flex xs4>
+                  <v-subheader>Enter category name</v-subheader>
+                </v-flex>
+                <v-flex xs8>
+                  <v-text-field
+                    name="input-1"
+                    label="Name"
+                    id="testing"
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
+             </v-container>
+            <v-card-actions>
+              <v-btn color="red" flat @click.stop="newCategory=false">Close</v-btn>
+            </v-card-actions>
+            <v-card-actions>
+              <v-btn color="primary" dark @click.stop="newCategory=false">Create</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-layout>
+
     </v-content>
   </v-app>
 </template>
@@ -95,6 +127,7 @@
 <script>
 export default {
   data: () => ({
+    newCategory: false,
     dialog: false,
     drawer: null,
     items: [
