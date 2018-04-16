@@ -86,6 +86,7 @@ export default {
         if (result) {
           this.error = false
           this.post()
+          this.$router.replace(this.$route.query.redirect || '/')
           return
         }
         this.error = 'There is an error(s)'
