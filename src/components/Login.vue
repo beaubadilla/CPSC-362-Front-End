@@ -10,6 +10,9 @@
                 <v-toolbar-title>Login</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
+              <v-alert outline color="red" icon="priority_high" :value=error>
+                {{ error }}
+              </v-alert>
               <v-card-text>
                 <v-form>
                   <v-text-field v-model="email" prepend-icon="person" name="login" label="User" type="text" placeholder="@csu.fullerton.edu"></v-text-field>
@@ -36,26 +39,48 @@ export default {
     return {
       title: 'Login',
       email: '',
-      password: ''
+      password: '',
+      error: false
     }
   },
   methods: {
+    checkCurrentLogin () {
+      if (this.$store.getters.isLoggedIn) {
+        this.$router.replace(this.$route.query.redirect || '/dashboard')
+      }
+    },
     post: function () {
       this.axios.post('http://titannotes.jonmouchou.com/api/auth/login', {
         email: this.email,
         password: this.password
       }).then((response) => {
-        this.$store.dispatch('login', {
-          email: this.email,
-          password: this.password
-        }).then(() => {
-          this.$router.push('/dashboard')
-        })
+        this.loginSuccessful(response)
         console.log(response)
-      })
+      }).catch(() => this.loginFailed())
+    },
+    loginSuccessful (req) {
+      if (!req.data.access_token) {
+        this.loginFailed()
+        return
+      }
+      this.error = false
+      localStorage.token = req.data.token
+      this.$store.dispatch('login')
+      this.$router.replace(this.$route.query.redirect || '/dashboard')
+    },
+    loginFailed () {
+      this.error = 'Login failed!'
+      this.$store.dispatch('logout')
     }
+  },
+  updated () {
+    this.checkCurrentLogin()
+  },
+  created () {
+    this.checkCurrentLogin()
   }
 }
 </script>
+
 <style scoped>
 </style>

@@ -10,8 +10,11 @@
                 <v-toolbar-title>Register</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
+              <v-alert outline color="red" icon="priority_high" :value=error>
+                {{ error }}
+              </v-alert>
               <v-card-text>
-                <v-form>
+                <v-form @submit.prevent="validateBeforeSubmit">
                   <v-text-field v-model="name" prepend-icon="person" name="Name" label="Name" type="text" v-validate="'required|max:40'" data-vv-delay="1000"></v-text-field>
                   <div v-show="errors.has('Name')">{{errors.first('Name')}}</div>
                   <v-text-field v-model="email" prepend-icon="email" name="email" label="Student Email" type="text" placeholder="@csu.fullerton.edu" v-validate="'required|max:40|regex:[[a-zA-Z0-9]+@csu.fullerton.edu'" data-vv-delay="1000"></v-text-field>
@@ -20,13 +23,13 @@
                   <div v-show="errors.has('password')">{{errors.first('password')}}</div>
                   <v-text-field v-model="confirmPassword" prepend-icon="lock" name="confirmPassword" label="Confirm Password" id="confirmPassword" type="password" placeholder="6 characters minimum" v-validate="'required|confirmed:password|min:6'" data-vv-delay="1000"></v-text-field>
                   <div v-show="errors.has('confirmPassword')">{{errors.first('confirmPassword')}}</div>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <router-link to="/">Already a member?</router-link>
+                    <v-btn type="submit" color="orange accent-3" :loading="loading" @click.native="loader = 'loading'" :disabled="loading">Register</v-btn>
+                  </v-card-actions>
                 </v-form>
               </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <router-link to="/">Already a member?</router-link>
-                <v-btn v-on:click="post" color="orange accent-3" :loading="loading" @click.native="loader = 'loading'" :disabled="loading">Register</v-btn>
-              </v-card-actions>
             </v-card>
           </v-flex>
         </v-layout>
@@ -48,7 +51,8 @@ export default {
       loading: false,
       loading2: false,
       loading3: false,
-      loading4: false
+      loading4: false,
+      error: false
     }
   },
   watch: {
@@ -62,17 +66,37 @@ export default {
     }
   },
   methods: {
+    checkCurrentLogin () {
+      if (this.$store.getters.isLoggedIn) {
+        this.$router.replace(this.$route.query.redirect || '/dashboard')
+      }
+    },
     post: function () {
       this.axios.post('http://titannotes.jonmouchou.com/api/auth/register', {
         name: this.name,
         email: this.email,
         password: this.password,
         password_confirmation: this.confirmPassword
-      }).then((response) => {
-        this.$router.push('/')
-        console.log(response)
+      }).then(function (data) {
+        console.log(data)
+      })
+    },
+    validateBeforeSubmit () {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.error = false
+          this.post()
+          return
+        }
+        this.error = 'There is an error(s)'
       })
     }
+  },
+  updated () {
+    this.checkCurrentLogin()
+  },
+  created () {
+    this.checkCurrentLogin()
   }
 }
 

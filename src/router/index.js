@@ -6,6 +6,7 @@ import Register from '@/components/Register'
 import Toolbar from '@/components/Toolbar'
 import Examplecard from '@/components/examplecard'
 import NotesExample from '@/components/NotesExample'
+import Logout from '@/components/Logout'
 
 Vue.use(Router)
 
@@ -37,7 +38,11 @@ export default new Router({
           component: NotesExample
         }
       ]
+    },
+    {
+    	path: '/logout',
+    	name: 'Logout',
+    	component: Logout
     }
-    
   ]
 })
