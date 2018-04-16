@@ -79,6 +79,7 @@ export default {
         password_confirmation: this.confirmPassword
       }).then(function (data) {
         console.log(data)
+<<<<<<< HEAD
       })
     },
     validateBeforeSubmit () {
@@ -89,6 +90,8 @@ export default {
           return
         }
         this.error = 'There is an error(s)'
+=======
+>>>>>>> a645373bea8d85727d433041fa89a4e79c2a2d94
       })
     }
   },
