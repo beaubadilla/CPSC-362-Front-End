@@ -81,7 +81,8 @@
         <v-btn flat>
           <v-icon>search</v-icon> Search
         </v-btn>
-        <v-btn flat>
+        <input type="file" @change="onFileSelected" style="display:none" ref="fileInputUpload">
+        <v-btn flat @click="$refs.fileInputUpload.click()">
           <v-icon>file_upload</v-icon>  Upload
         </v-btn>
       </v-toolbar-items>
@@ -115,10 +116,25 @@ export default {
       { divider: true },
       { icon: 'settings', text: 'Settings' },
       { href: '/logout', icon: 'lock', text: 'Log out' }
-    ]
+    ],
+    selectedFile: null
   }),
   props: {
     source: String
+  },
+  methods: {
+    upload () {
+      const fd = new FormData()
+      fd.append('image', this.selectedFile, this.selectedFile.name)// check if you need this
+      // axios.post('http://titannotes.jonmouchou.com/api/auth/file', fd).then(res => { console.log(res)})
+      // add upload progress notification?
+    },
+    onFileSelected (event) {
+      this.selectedFile = event.target.files[0]
+      if (this.selectedFile) {
+        this.upload()
+      }
+    }
   }
 }
 </script>
