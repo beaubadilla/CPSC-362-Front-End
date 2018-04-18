@@ -81,10 +81,7 @@
         <v-btn flat>
           <v-icon>search</v-icon> Search
         </v-btn>
-        <input type="file" @change="onFileSelected" style="display:none" ref="fileInputUpload">
-        <v-btn flat @click="$refs.fileInputUpload.click()">
-          <v-icon>file_upload</v-icon>  Upload
-        </v-btn>
+        <fileUpload></fileUpload>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -94,8 +91,12 @@
 </template>
 
 <script>
+import FileUpload from './FileUpload.vue'
 export default {
   data: () => ({
+    components: {
+      fileUpload: FileUpload
+    },
     dialog: false,
     drawer: null,
     items: [
