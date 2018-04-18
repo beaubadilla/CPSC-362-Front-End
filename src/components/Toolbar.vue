@@ -93,10 +93,10 @@
 <script>
 import FileUpload from './FileUpload.vue'
 export default {
+  components: {
+    fileUpload: FileUpload
+  },
   data: () => ({
-    components: {
-      fileUpload: FileUpload
-    },
     dialog: false,
     drawer: null,
     items: [
