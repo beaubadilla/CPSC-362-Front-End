@@ -1,21 +1,27 @@
+/* eslint-disable */
 <template>
-    <v-container>
-        <h3 class="my-3">New Category</h3>
-        <v-card>
-            <v-container fluid>
-              <v-layout column>
-                <v-flex xs8>
-                  <v-text-field
-                    name="input-1"
-                    label="Name"
-                    id="testing"
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-             </v-container>
-            <v-card-actions>
-              <v-btn color="orange lighten-1" dark>Create</v-btn>
-            </v-card-actions>
-        </v-card>
-    </v-container>
+  <div>
+    <v-btn v-on:click="addCategory" color="orange lighten-1" dark>Create</v-btn>
+    <v-text-field v-model="categoryName"></v-text-field >
+  </div>
 </template>
+
+<script>
+import Toolbar from './Toolbar'
+export default {
+  data () {
+    return {
+      categoryName: '   Untitled category'
+    }
+  },
+  components: {
+    'Toolbar': Toolbar
+  },
+  method: {
+    addCategory: function () {
+      Toolbar.items.children.push({href: '/$categoryName', text: 'categoryName'})
+      console.log('I added a new category ')
+    }
+  }
+}
+</script>

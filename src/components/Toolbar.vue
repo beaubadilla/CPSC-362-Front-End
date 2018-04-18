@@ -93,6 +93,7 @@
 </template>
 
 <script>
+import NewCategory from './NewCategory'
 export default {
   data: () => ({
     dialog: false,
@@ -117,6 +118,9 @@ export default {
       { href: '/logout', icon: 'lock', text: 'Log out' }
     ]
   }),
+  components: {
+    'NewCategory': NewCategory
+  },
   props: {
     source: String
   }
