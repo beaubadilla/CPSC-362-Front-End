@@ -77,12 +77,12 @@
         <span class="hidden-sm-and-down">Titan Notes</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down">
+        <div class="hidden-sm-and-down">
         <v-btn flat>
           <v-icon>search</v-icon> Search
         </v-btn>
         <fileUpload></fileUpload>
-      </v-toolbar-items>
+      </div>
     </v-toolbar>
     <v-content>
       <router-view/>
