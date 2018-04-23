@@ -122,20 +122,6 @@ export default {
   }),
   props: {
     source: String
-  },
-  methods: {
-    upload () {
-      const fd = new FormData()
-      fd.append('image', this.selectedFile, this.selectedFile.name)// check if you need this
-      // axios.post('http://titannotes.jonmouchou.com/api/auth/file', fd).then(res => { console.log(res)})
-      // add upload progress notification?
-    },
-    onFileSelected (event) {
-      this.selectedFile = event.target.files[0]
-      if (this.selectedFile) {
-        this.upload()
-      }
-    }
   }
 }
 </script>

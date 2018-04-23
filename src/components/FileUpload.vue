@@ -1,7 +1,6 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="500px">
-    <!-- <input type="file" @change="onFileSelected" style="display:none" ref="fileInputUpload"> -->
-    <v-btn flat dark slot="activator" @click="$refs.fileInputUpload.click()">
+    <v-btn flat dark slot="activator">
       <v-icon>file_upload</v-icon> Upload </v-btn>
     <v-card>
       <v-card-title> <span class="headline">File Upload</span> </v-card-title>
@@ -9,19 +8,28 @@
         <v-container grid-list-md>
           <v-layout wrap>
             <v-flex xs12>
-              <v-text-field label="Title" required></v-text-field>
+              <v-text-field label="Title" v-model="title" required></v-text-field>
             </v-flex>
             <v-flex xs12>
-              <v-text-field label="Description" required></v-text-field>
+              <v-text-field label="Subject" v-model="subject" required></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-text-field label="Description" required v-model="description"></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-text-field label="Course Number" v-model="courseNumber" required></v-text-field>
+            </v-flex>
+            <v-flex xs12>
+              <v-text-field label="Professor" v-model="professor" required></v-text-field>
             </v-flex>
             <div class="container">
               <div class="dropbox">
-              <input type="file" :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept=".doc, .docx, .pdf, .txt, .odt, .rtf" class="input-file">
-              <p v-if="isInitial">
+              <input type="file" @change="onFileSelected" ref="fileInputUpload">>
+              <p>
                 Drag your file here to begin<br> or click to browse
               </p>
-              <p v-if="isSaving">
-                Uploading {{ fileCount }} files...
+              <p>
+                Upload
               </p>
             </div>
             </div>
@@ -30,54 +38,49 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-        <v-btn color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
+        <v-btn color="blue darken-1" flat @click.native="dialog = false" @click="postNotes">Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
-const STATUS_INITIAL = 0
-const STATUS_SAVING = 1
-const STATUS_SUCCESS = 2
-const STATUS_FAILED = 3
-
 export default {
   data: () => ({
     uploadedFiles: [],
     uploadError: null,
-    currentStatus: null,
+    currentStatus: 0,
     uploadFieldName: 'documents',
-    dialog: false
+    dialog: false,
+    selectedFile: null,
+    title: '',
+    subject: '',
+    description: '',
+    courseNumber: '',
+    professor: ''
   }),
-  computed: {
-    isInitial () {
-      return this.currentStatus === STATUS_INITIAL
-    },
-    isSaving () {
-      return this.currentStatus === STATUS_SUCCESS
-    },
-    isFailed () {
-      return this.currentStatus === STATUS_FAILED
-    }
-  },
   methods: {
-    reset () {
-      this.currentStatus = STATUS_INITIAL
-      this.uploadedFile = []
-      this.uploadedError = null
+    onFileSelected (event) {
+      this.selectedFile = event.target.files[0]
     },
-    save (formData) {
-      this.currentStatus = STATUS_SAVING
-    },
-    filesChange (fieldName, fileList) {
-      const formData = new FormData()
-
-      if (!fileList.length) return
-      this.save(formData)
-    },
-    mounted () {
-      this.reset()
+    postNotes () {
+      var formData = new FormData()
+      formData.append('title', this.title)
+      formData.append('subject', this.subject)
+      formData.append('description', this.description)
+      formData.append('course_number', this.courseNumber)
+      formData.append('professor', this.professor)
+      formData.append('doc', this.selectedFile)
+      var token = 'bearer ' + localStorage.token
+      this.axios.post('http://titannotes.jonmouchou.com/api/notes', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': token
+        }
+      }).then(res => {
+        console.log(res)
+        console.log(localStorage.token)
+      })
     }
   }
 }
