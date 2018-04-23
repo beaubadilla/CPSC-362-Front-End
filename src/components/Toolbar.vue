@@ -78,6 +78,15 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
         <div class="hidden-sm-and-down">
+          <ais-index app-id='46REFXDXXW'
+           api-key='053b6f707307dc7985393b5c0eec6cbd'
+           index-name="contacts">
+
+           <ais-input placeholder="Search contacts..."></ais-input>
+
+           <ais-results></ais-results>
+
+</ais-index>
         <v-btn flat>
           <v-icon>search</v-icon> Search
         </v-btn>
