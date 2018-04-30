@@ -21,8 +21,14 @@ export default {
   },
   method: {
     addCategory: function () {
-      Toolbar.items.children.push({href: '/$categoryName', text: 'categoryName'})
-      index.routes.children.push({path: '/$categoryName', name: '/$categoryName', component: '/$categoryName'})
+      Toolbar.items.children.push({
+        href: '/$categoryName',
+        text: 'categoryName'
+      })
+      index.routes.children.push({
+        path: '/$categoryName',
+        name: '/$categoryName',
+        component: '/$categoryName'})
       console.log('I added a new category ')
     }
   }
