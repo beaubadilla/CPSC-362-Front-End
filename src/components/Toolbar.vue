@@ -77,33 +77,43 @@
         <span class="hidden-sm-and-down">Titan Notes</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+          <!--<ais-index
+            app-id='46REFXDXXW'
+            api-key='053b6f707307dc7985393b5c0eec6cbd'
+            index-name='notes'>
+
+           <ais-input placeholder="Search notes..." id="SearchBar"></ais-input>
+           <ais-results>
+              <template scope="{ result }">
+                <div>
+                  <ul>
+                    <li>{{result.title}}</li>
+                  </ul>
+                </div>
+              </template>
+           </ais-results>
+          </ais-index> -->
         <div class="hidden-sm-and-down">
-          <ais-index app-id='46REFXDXXW'
-           api-key='053b6f707307dc7985393b5c0eec6cbd'
-           index-name="contacts">
-
-           <ais-input placeholder="Search contacts..."></ais-input>
-
-           <ais-results></ais-results>
-
-</ais-index>
-        <v-btn flat>
+        <v-btn flat v-on:click="searchPopUp">
           <v-icon>search</v-icon> Search
         </v-btn>
         <fileUpload></fileUpload>
       </div>
     </v-toolbar>
-    <v-content>
+    <v-content id="OpenArea">
+      <search id="SearchBar"></search>
       <router-view/>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import Search from './Search.vue'
 import FileUpload from './FileUpload.vue'
 export default {
   components: {
-    fileUpload: FileUpload
+    fileUpload: FileUpload,
+    search: Search
   },
   data: () => ({
     dialog: false,
@@ -131,6 +141,28 @@ export default {
   }),
   props: {
     source: String
+  },
+  methods: {
+    searchPopUp () {
+      if (document.getElementById('SearchBar').style.display === 'inline') {
+        document.getElementById('SearchBar').style.display = 'none'
+      } else {
+        document.getElementById('SearchBar').style.display = 'inline'
+      }
+    }
   }
 }
 </script>
+
+<style scoped>
+#SearchBar {
+  display: null;
+  /*background-color: blue;*/
+}
+input::-webkit-input-placeholder{
+    color:black;
+}
+div {
+  border: solid clear;
+}
+</style>

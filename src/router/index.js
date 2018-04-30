@@ -7,6 +7,7 @@ import Toolbar from '@/components/Toolbar'
 import Examplecard from '@/components/examplecard'
 import NotesExample from '@/components/NotesExample'
 import Logout from '@/components/Logout'
+import Viewing from '@/components/Viewing'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
     	path: '/logout',
     	name: 'Logout',
     	component: Logout
+    },
+    {
+      path: '/viewing',
+      name: 'Viewing',
+      component: Viewing
     }
   ]
 })

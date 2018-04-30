@@ -1,7 +1,8 @@
 <template>
+<div id="background">
 <div id="app">
   <v-app id="inspire">
-    <v-content>
+    <v-content id="background">
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
@@ -22,7 +23,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <router-link to="/register">Sign Up</router-link>
-                <v-btn v-on:click="post" color="orange accent-3">Login</v-btn>
+                <v-btn v-on:click="post" color="orange accent-3" :loading="loading" @click.native="loader = 'loading'" :disabled="loading" type="submit">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -30,6 +31,7 @@
       </v-container>
     </v-content>
   </v-app>
+</div>
 </div>
 </template>
 
@@ -40,7 +42,8 @@ export default {
       title: 'Login',
       email: '',
       password: '',
-      error: false
+      error: false,
+      loader: null
     }
   },
   methods: {
@@ -78,9 +81,64 @@ export default {
   },
   created () {
     this.checkCurrentLogin()
+  },
+  watch: {
+    loader () {
+      const l = this.loader
+      this[l] = !this[l]
+
+      setTimeout(() => (this[l] = false), 1000)
+
+      this.loader = null
+    }
   }
 }
 </script>
 
 <style scoped>
+#background {
+  background-size: cover;
+  background-image: url('../assets/SRC.jpg')
+}
+#background {
+  background-size: cover;
+  background-image: url('../assets/SRC.jpg')
+
+}
+.custom-loader {
+  animation: loader 1s infinite;
+  display: flex;
+}
+@-moz-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>
