@@ -129,6 +129,16 @@ export default {
     ],
     selectedFile: null
   }),
+  methods: {
+    checkCurrentLogin () {
+      if (!this.$store.getters.isLoggedIn) {
+        this.$router.replace(this.$route.query.redirect || '/')
+      }
+    }
+  },
+  created () {
+    this.checkCurrentLogin()
+  },
   props: {
     source: String
   }
