@@ -15,9 +15,11 @@
                 {{ error }}
               </v-alert>
               <v-card-text>
-                <v-form>
-                  <v-text-field v-model="email" prepend-icon="person" name="login" label="User" type="text" placeholder="@csu.fullerton.edu"></v-text-field>
-                  <v-text-field v-model="password" prepend-icon="lock" name="password" label="Password" id="password" type="password"></v-text-field>
+                <v-form @submit.prevent="validateBeforeSubmit">
+                  <v-text-field v-model="email" prepend-icon="person" name="login" label="User" type="text" placeholder="@csu.fullerton.edu" v-validate="'required|max:40|regex:[[a-zA-Z0-9]+@csu.fullerton.edu'" data-vv-delay="1000"></v-text-field>
+                  <div v-show="errors.has('email')">{{errors.first('email')}}</div>
+                  <v-text-field v-model="password" prepend-icon="lock" name="password" label="Password" id="password" type="password" v-validate="'required|min:6'" data-vv-delay="1000"></v-text-field>
+                  <div v-show="errors.has('password')">{{errors.first('password')}}</div>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -74,6 +76,17 @@ export default {
     loginFailed () {
       this.error = 'Login failed!'
       this.$store.dispatch('logout')
+    },
+    validateBeforeSubmit () {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.error = false
+          this.post()
+          this.$router.replace(this.$route.query.redirect || '/')
+          return
+        }
+        this.error = 'There is an error(s)'
+      })
     }
   },
   updated () {

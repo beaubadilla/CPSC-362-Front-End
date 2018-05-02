@@ -7,7 +7,7 @@
 
         <ais-input placeholder="Search notes..." id="SearchBar"></ais-input>
            <ais-results>
-              <template scope="{ result }">
+              <template slot-scope="{ result }">
                 <div>
                   <ul>
                     <li>{{result.title}}</li>
