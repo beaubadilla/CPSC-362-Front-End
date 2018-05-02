@@ -28,8 +28,8 @@
                         {{ result.description }}
                       </p>
                     </v-card-text>
-                    <v-card-row actions class="blue-grey darken-1">
-                      <router-link :to="{ name: 'user', params: {userId: 123}}"><v-btn flat class="white--text">View Notes</v-btn></router-link>
+                    <v-card-row actions>
+                      <router-link :to="{ name: 'View', params: {id: result.id}}"><v-btn color="info">View Notes</v-btn></router-link>
                     </v-card-row>
                   </v-card>
                 </v-flex>
