@@ -11,7 +11,7 @@
                     <div>
                       <div class="headline">{{ item.attributes.title }} </div>
                       <span class="grey--text">Professor: {{ item.attributes.professor
- }} <br> Subject: {{ item.attributes.subject }}</span>
+ }} <br> Subject: {{ item.attributes.subject }} {{ item.attributes.course_number }}</span>
                     </div>
                   </v-card-title>
                   <v-card-text> {{ item.attributes.description }} </v-card-text>

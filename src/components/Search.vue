@@ -18,15 +18,13 @@
               <template slot-scope="{ result }">
                 <v-flex xs12>
                   <v-card>
-                    <v-card-row class="blue-grey darken-1">
                       <v-card-title primary-title>
                         <div>
                           <div class="headline">{{ result.title }} </div>
                           <span class="grey--text">Professor: {{ result.professor
-    }} <br> Subject: {{ result.subject }}</span>
+    }} <br> Subject: {{ result.subject }} {{ result.course_number }}</span>
                         </div>
                       </v-card-title>
-                    </v-card-row>
                     <v-card-text>
                       <p>
                         {{ result.description }}
