@@ -138,7 +138,7 @@ export default {
           this.reset()
           this.dialog = false
           // var titleForURL = res.data.data.attributes.title
-          this.$router.push({name: 'View', params: {id: res.data.data.attributes.title}})
+          this.$router.push({name: 'View', params: {id: res.data.data.id}})
         })
       }
     }
