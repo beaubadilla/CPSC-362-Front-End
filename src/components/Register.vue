@@ -26,7 +26,7 @@
                   <v-card-actions>
                     <v-spacer></v-spacer>
                     <router-link to="/">Already a member?</router-link>
-                    <v-btn type="submit" color="orange accent-3" :loading="loading" @click.native="loader = 'loading'" :disabled="loading">Register</v-btn>
+                    <v-btn type="submit" color="orange accent-3"> <!--:loading="loading" @click.native="loader = 'loading'" :disabled="loading">-->Register</v-btn>
                   </v-card-actions>
                 </v-form>
               </v-card-text>
@@ -55,7 +55,7 @@ export default {
       error: false
     }
   },
-  watch: {
+  /* watch: {
     loader () {
       const l = this.loader
       this[l] = !this[l]
@@ -64,7 +64,7 @@ export default {
 
       this.loader = null
     }
-  },
+  }, */
   methods: {
     checkCurrentLogin () {
       if (this.$store.getters.isLoggedIn) {

@@ -23,7 +23,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <router-link to="/register">Sign Up</router-link>
-                <v-btn v-on:click="post" color="orange accent-3" :loading="loading" @click.native="loader = 'loading'" :disabled="loading" type="submit">Login</v-btn>
+                <v-btn v-on:click="post" color="orange accent-3" type="submit"> <!--:loading="loading" @click.native="loader = 'loading'" :disabled="loading" -->Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -81,8 +81,8 @@ export default {
   },
   created () {
     this.checkCurrentLogin()
-  },
-  watch: {
+  }
+  /* watch: {
     loader () {
       const l = this.loader
       this[l] = !this[l]
@@ -91,7 +91,7 @@ export default {
 
       this.loader = null
     }
-  }
+  } */
 }
 </script>
 

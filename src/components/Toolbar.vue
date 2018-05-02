@@ -144,14 +144,14 @@ export default {
       if (!this.$store.getters.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/')
       }
+    },
+    searchPopUp () {
+      if (document.getElementById('SearchBar').style.display === 'inline') {
+        document.getElementById('SearchBar').style.display = 'none'
+      } else {
+        document.getElementById('SearchBar').style.display = 'inline'
+      }
     }
-    // searchPopUp () {
-    //   if (document.getElementById('SearchBar').style.display === 'inline') {
-    //     document.getElementById('SearchBar').style.display = 'none'
-    //   } else {
-    //     document.getElementById('SearchBar').style.display = 'inline'
-    //   }
-    // }
   },
   created () {
     this.checkCurrentLogin()
