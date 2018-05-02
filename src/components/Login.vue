@@ -51,7 +51,7 @@ export default {
   methods: {
     checkCurrentLogin () {
       if (this.$store.getters.isLoggedIn) {
-        this.$router.replace(this.$route.query.redirect || '/dashboard')
+        this.$router.replace(this.$route.query.redirect || '/home')
       }
     },
     post: function () {
