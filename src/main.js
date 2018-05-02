@@ -11,6 +11,7 @@ import 'vuetify/dist/vuetify.min.css'
 import {store} from './store/store'
 import VeeValidate from 'vee-validate'
 import InstantSearch from 'vue-instantsearch'
+
 Vue.use(Vuetify)
 Vue.use(VueAxios, axios)
 Vue.use(VeeValidate)

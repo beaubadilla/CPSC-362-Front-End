@@ -2,7 +2,7 @@
   <v-layout column>
     <v-container fluid grid-list-md>
       <v-layout row wrap>
-        <v-flex v-bind="{ ['xs${card.flex}']: true }" v-for="item in list.data" :key="item">
+        <v-flex v-bind="{ ['xs${card.flex}']: true }" v-for="item in list.data" :key="item.id">
           <v-card>
             <v-container fill-height fluid>
               <v-layout fill-height>
@@ -11,13 +11,13 @@
                     <div>
                       <div class="headline">{{ item.attributes.title }} </div>
                       <span class="grey--text">Professor: {{ item.attributes.professor
- }} <br> Subject: {{ item.attributes.subject }}</span>
+ }} <br> Subject: {{ item.attributes.subject }} {{ item.attributes.course_number }}</span>
                     </div>
                   </v-card-title>
                   <v-card-text> {{ item.attributes.description }} </v-card-text>
-                  <v-card-row actions>
+                  <v-card-actions>
                     <router-link tag="button" :to="{ name: 'View', params: {id: item.id}}"><v-btn color="info">View Notes</v-btn></router-link>
-                  </v-card-row>
+                  </v-card-actions>
                 </v-flex>
               </v-layout>
             </v-container>
