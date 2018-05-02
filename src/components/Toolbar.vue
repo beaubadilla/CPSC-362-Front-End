@@ -94,27 +94,25 @@
            </ais-results>
           </ais-index> -->
         <div class="hidden-sm-and-down">
-        <v-btn flat v-on:click="searchPopUp">
-          <v-icon>search</v-icon> Search
-        </v-btn>
+        <router-link to="/search" tag="button">
+          <v-btn flat v-on:click="searchPopUp">
+            <v-icon>search</v-icon> Search
+          </v-btn>
+        </router-link>
         <fileUpload></fileUpload>
-        <Viewing documentURL='selectedFileURL'></Viewing>
       </div>
     </v-toolbar>
     <v-content id="OpenArea">
-      <search id="SearchBar"></search>
       <router-view/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Search from './Search.vue'
 import FileUpload from './FileUpload.vue'
 export default {
   components: {
-    fileUpload: FileUpload,
-    search: Search
+    fileUpload: FileUpload
   },
   data: () => ({
     dialog: false,
@@ -146,14 +144,14 @@ export default {
       if (!this.$store.getters.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/')
       }
-    },
-    searchPopUp () {
-      if (document.getElementById('SearchBar').style.display === 'inline') {
-        document.getElementById('SearchBar').style.display = 'none'
-      } else {
-        document.getElementById('SearchBar').style.display = 'inline'
-      }
     }
+    // searchPopUp () {
+    //   if (document.getElementById('SearchBar').style.display === 'inline') {
+    //     document.getElementById('SearchBar').style.display = 'none'
+    //   } else {
+    //     document.getElementById('SearchBar').style.display = 'inline'
+    //   }
+    // }
   },
   created () {
     this.checkCurrentLogin()
@@ -165,10 +163,10 @@ export default {
 </script>
 
 <style scoped>
-#SearchBar {
+/* #SearchBar {
   display: none;
-  /*background-color: blue;*/
-}
+  /*background-color: blue;
+} */
 input::-webkit-input-placeholder{
     color:black;
 }

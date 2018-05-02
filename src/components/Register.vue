@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <v-app id="inspire">
-    <v-content id="background">
+    <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
@@ -104,11 +104,6 @@ export default {
 </script>
 
 <style scoped>
-#background {
-  background-size: cover;
-  background-image: url('../assets/SRC.jpg')
-
-}
 .custom-loader {
   animation: loader 1s infinite;
   display: flex;

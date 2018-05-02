@@ -72,13 +72,9 @@ export default {
     description: '',
     courseNumber: '',
     professor: '',
-<<<<<<< HEAD
-    fileURL: ''
-=======
     fileName: '',
     file: '',
     formHasErrors: false
->>>>>>> 9388b2a377887ce3a6376a02ee9ee065ac282b76
   }),
   computed: {
     isInitial () {
@@ -118,14 +114,7 @@ export default {
         if (!this.form[f]) {
           this.formHasErrors = true
         }
-<<<<<<< HEAD
-      }).then(res => {
-        console.log(res)
-        console.log(localStorage.token)
-        // this.$router.replace(this.$route.query.redirect || '/viewing/:fileURL')
-=======
         this.$refs[f].validate(true)
->>>>>>> 9388b2a377887ce3a6376a02ee9ee065ac282b76
       })
 
       if (!this.formHasErrors) {
