@@ -72,7 +72,7 @@ export default {
       }
     },
     post: function () {
-      this.axios.post('http://titannotes.jonmouchou.com/api/auth/register', {
+      this.axios.post('https://titannotes.jonmouchou.com/api/auth/register', {
         name: this.name,
         email: this.email,
         password: this.password,

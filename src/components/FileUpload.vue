@@ -127,7 +127,7 @@ export default {
         formData.append('professor', this.professor)
         formData.append('doc', this.selectedFile)
         var token = 'bearer ' + localStorage.token
-        this.axios.post('http://titannotes.jonmouchou.com/api/v1/notes', formData, {
+        this.axios.post('https://titannotes.jonmouchou.com/api/v1/notes', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': token

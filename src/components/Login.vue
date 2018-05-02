@@ -55,7 +55,7 @@ export default {
       }
     },
     post: function () {
-      this.axios.post('http://titannotes.jonmouchou.com/api/auth/login', {
+      this.axios.post('https://titannotes.jonmouchou.com/api/auth/login', {
         email: this.email,
         password: this.password
       }).then((response) => {
