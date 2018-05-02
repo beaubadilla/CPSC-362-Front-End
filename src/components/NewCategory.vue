@@ -12,7 +12,7 @@ import index from '../router/index'
 export default {
   data () {
     return {
-      categoryName: '   Untitled category'
+      categoryName: 'Untitled category'
     }
   },
   components: {
@@ -23,13 +23,12 @@ export default {
     addCategory: function () {
       Toolbar.items.children.push({
         href: '/$categoryName',
-        text: 'categoryName'
+        text: '/$categoryName'
       })
       index.routes.children.push({
         path: '/$categoryName',
         name: '/$categoryName',
         component: '/$categoryName'})
-      console.log('I added a new category ')
     }
   }
 }
