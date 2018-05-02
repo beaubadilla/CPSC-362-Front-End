@@ -1,12 +1,11 @@
 <template>
     <div>
         <div v-if="note">
-            <h2>{{note.title}}</h2>
-            <h2>{{note.description}}</h2>
-            <h2>{{note.subject}}</h2>
-            <h2>{{note.course_number}}</h2>
-            <h2>{{note.professor}}</h2>
-            <iframe id="viewer" :src="'https://docs.google.com/viewer?url='+ note.link + '&embedded=true'" style="width:600px; height:500px;" frameborder="0"></iframe>
+            <h2 class="text-xs-center" style="font-family: Lora; font-size: xx-large">{{note.title}}</h2>
+            <h2 class="text-xs-center" style="font-family: Lora; font-size: small">{{note.description}}</h2>
+            <h2 class="text-xs-center" style="font-family: Lora; font-size: large">{{note.subject}} {{note.course_number}}</h2>
+            <h2 class="text-xs-center" style="font-family: Lora; font-size: medium">{{note.professor}}</h2>
+              <iframe id="viewer" :src="'https://docs.google.com/viewer?url='+ note.link + '&embedded=true'" style="width:1200px; height:1000px;" frameborder="0"></iframe>
         </div>
         <div v-else>
           <h1>Whoops, No note found</h1>
@@ -52,3 +51,10 @@ export default {
   ]
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css?family=Lora')
+h2 {
+  border: solid black;
+}
+</style>
