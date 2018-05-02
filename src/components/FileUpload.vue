@@ -57,7 +57,8 @@ export default {
     subject: '',
     description: '',
     courseNumber: '',
-    professor: ''
+    professor: '',
+    fileURL: ''
   }),
   methods: {
     onFileSelected (event) {
@@ -80,6 +81,7 @@ export default {
       }).then(res => {
         console.log(res)
         console.log(localStorage.token)
+        // this.$router.replace(this.$route.query.redirect || '/viewing/:fileURL')
       })
     }
   }

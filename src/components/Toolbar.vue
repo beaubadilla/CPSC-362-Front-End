@@ -98,6 +98,7 @@
           <v-icon>search</v-icon> Search
         </v-btn>
         <fileUpload></fileUpload>
+        <Viewing documentURL='selectedFileURL'></Viewing>
       </div>
     </v-toolbar>
     <v-content id="OpenArea">
@@ -137,7 +138,8 @@ export default {
       { icon: 'settings', text: 'Settings' },
       { href: '/logout', icon: 'lock', text: 'Log out' }
     ],
-    selectedFile: null
+    selectedFile: null,
+    selectedFileURL: 'http://titannotes.jonmouchou.com/storage/docs/RlKUzMZ7AYBwVBT3cDRO6AGe9tMJ6P4cqAgFzcd4.pdf'
   }),
   methods: {
     checkCurrentLogin () {
