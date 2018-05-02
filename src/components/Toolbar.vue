@@ -74,7 +74,7 @@
     >
       <v-toolbar-title style="width: 200px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">Titan Notes</span>
+        <router-link tag="button" :to="{ name: 'Home'}"><span class="hidden-sm-and-down">Titan Notes</span></router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
           <!--<ais-index

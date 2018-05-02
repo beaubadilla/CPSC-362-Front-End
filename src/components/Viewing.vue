@@ -5,7 +5,7 @@
             <h2 class="text-xs-center" style="font-family: Lora; font-size: small">{{note.description}}</h2>
             <h2 class="text-xs-center" style="font-family: Lora; font-size: large">{{note.subject}} {{note.course_number}}</h2>
             <h2 class="text-xs-center" style="font-family: Lora; font-size: medium">{{note.professor}}</h2>
-              <iframe id="viewer" :src="'https://docs.google.com/viewer?url='+ note.link + '&embedded=true'" style="width:1200px; height:1000px;" frameborder="0"></iframe>
+              <iframe id="viewer" :src="'https://docs.google.com/viewer?url='+ note.link + '&embedded=true'" style="width:100%; height:900px;" frameborder="0"></iframe>
         </div>
         <div v-else>
           <h1>Whoops, No note found</h1>

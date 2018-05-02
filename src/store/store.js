@@ -33,11 +33,9 @@ export const store = new Vuex.Store({
     login ({commit}, creds) {
       commit(LOGIN)
       return new Promise(resolve => {
-        setTimeout(() => {
-          localStorage.setItem('token', creds)
-          commit(LOGIN_SUCCESS)
-          resolve()
-        }, 1000)
+        localStorage.setItem('token', creds)
+        commit(LOGIN_SUCCESS)
+        resolve()
       })
     },
     logout ({commit}) {
