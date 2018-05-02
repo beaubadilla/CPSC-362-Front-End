@@ -71,7 +71,7 @@ export default {
       this.error = false
       localStorage.token = req.data.token
       this.$store.dispatch('login', req.data.access_token)
-      this.$router.replace(this.$route.query.redirect || '/dashboard')
+      this.$router.replace(this.$route.query.redirect || '/home')
     },
     loginFailed () {
       this.error = 'Login failed!'

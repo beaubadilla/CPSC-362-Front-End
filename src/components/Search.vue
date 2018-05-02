@@ -20,7 +20,11 @@
                   <v-card>
                     <v-card-row class="blue-grey darken-1">
                       <v-card-title primary-title>
-                        <h4> {{ result.title }} </h4>
+                        <div>
+                          <div class="headline">{{ result.title }} </div>
+                          <span class="grey--text">Professor: {{ result.professor
+    }} <br> Subject: {{ result.subject }}</span>
+                        </div>
                       </v-card-title>
                     </v-card-row>
                     <v-card-text>
@@ -29,7 +33,7 @@
                       </p>
                     </v-card-text>
                     <v-card-row actions>
-                      <router-link :to="{ name: 'View', params: {id: result.id}}"><v-btn color="info">View Notes</v-btn></router-link>
+                      <router-link tag="button" :to="{ name: 'View', params: {id: result.id}}"><v-btn color="info">View Notes</v-btn></router-link>
                     </v-card-row>
                   </v-card>
                 </v-flex>

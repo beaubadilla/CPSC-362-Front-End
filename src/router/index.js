@@ -9,6 +9,7 @@ import NotesExample from '@/components/NotesExample'
 import Logout from '@/components/Logout'
 import View from '@/components/Viewing'
 import Search from '@/components/Search'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -48,7 +49,12 @@ export default new Router({
           path: '/search',
           name: 'Search',
           component: Search
-        }
+        },
+        {
+          path: '/home',
+          name: 'Home',
+          component: Home
+        },
       ]
     },
     {
