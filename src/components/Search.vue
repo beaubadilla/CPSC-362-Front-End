@@ -32,9 +32,9 @@
                         {{ result.description }}
                       </p>
                     </v-card-text>
-                    <v-card-row actions>
+                    <v-card-actions>
                       <router-link tag="button" :to="{ name: 'View', params: {id: result.id}}"><v-btn color="info">View Notes</v-btn></router-link>
-                    </v-card-row>
+                    </v-card-actions>
                   </v-card>
                 </v-flex>
               </template>
