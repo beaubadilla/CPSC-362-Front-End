@@ -1,8 +1,15 @@
 <template>
     <div>
-        <h1>File Viewer</h1>
-        <div>
-            <iframe id="viewer" src="https://docs.google.com/viewer?url=http://titannotes.jonmouchou.com/storage/docs/RlKUzMZ7AYBwVBT3cDRO6AGe9tMJ6P4cqAgFzcd4.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+        <div v-if="note">
+            <h2>{{note.title}}</h2>
+            <h2>{{note.description}}</h2>
+            <h2>{{note.subject}}</h2>
+            <h2>{{note.course_number}}</h2>
+            <h2>{{note.professor}}</h2>
+            <iframe id="viewer" :src="'https://docs.google.com/viewer?url='+ note.link + '&embedded=true'" style="width:600px; height:500px;" frameborder="0"></iframe>
+        </div>
+        <div v-else>
+          <h1>Whoops, No note found</h1>
         </div>
     </div>
 </template>
@@ -11,10 +18,7 @@
 export default {
   data: function () {
     return {
-      begURL: 'https://docs.google.com/viewer?url=',
-      docURL: this.documentURL,
-      endURL: '&embedded=true',
-      srcURL: ''
+      note: null
     }
   },
   methods: {
@@ -28,6 +32,20 @@ export default {
       var newSRC = document.getElementById('viewer')
       newSRC.src = this.srcURL
     }
+  },
+  created: function () {
+    let self = this
+    var token = 'bearer ' + localStorage.token
+    this.axios.get('https://titannotes.jonmouchou.com/api/v1/notes/' + this.$route.params.id, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': token
+      }
+    })
+      .then(function (data) {
+        console.log(data.data)
+        self.note = data.data.attributes
+      })
   },
   props: [
     'documentURL'
