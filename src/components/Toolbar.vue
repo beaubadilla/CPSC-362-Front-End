@@ -144,15 +144,7 @@ export default {
       if (!this.$store.getters.isLoggedIn) {
         this.$router.replace(this.$route.query.redirect || '/')
       }
-    }
-  },
-  created () {
-    this.checkCurrentLogin()
-  },
-  props: {
-    source: String
-  },
-  methods: {
+    },
     searchPopUp () {
       if (document.getElementById('SearchBar').style.display === 'inline') {
         document.getElementById('SearchBar').style.display = 'none'
@@ -160,13 +152,19 @@ export default {
         document.getElementById('SearchBar').style.display = 'inline'
       }
     }
+  },
+  created () {
+    this.checkCurrentLogin()
+  },
+  props: {
+    source: String
   }
 }
 </script>
 
 <style scoped>
 #SearchBar {
-  display: null;
+  display: none;
   /*background-color: blue;*/
 }
 input::-webkit-input-placeholder{
