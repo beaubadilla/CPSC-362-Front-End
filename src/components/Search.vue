@@ -70,7 +70,7 @@
   background: none;
   border: none;
   position: absolute;
-  z-index: 30;
+  z-index: 1;
   top: 40px;
 }
 
