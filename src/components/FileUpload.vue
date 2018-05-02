@@ -74,7 +74,8 @@ export default {
     professor: '',
     fileName: '',
     file: '',
-    formHasErrors: false
+    formHasErrors: false,
+    fileURL: ''
   }),
   computed: {
     isInitial () {
@@ -136,6 +137,8 @@ export default {
           console.log(localStorage.token)
           this.reset()
           this.dialog = false
+          var titleForURL = res.data.data.attributes.title
+          this.$router.push({name: 'View', params: {id: titleForURL}})
         })
       }
     }

@@ -136,8 +136,7 @@ export default {
       { icon: 'settings', text: 'Settings' },
       { href: '/logout', icon: 'lock', text: 'Log out' }
     ],
-    selectedFile: null,
-    selectedFileURL: 'http://titannotes.jonmouchou.com/storage/docs/RlKUzMZ7AYBwVBT3cDRO6AGe9tMJ6P4cqAgFzcd4.pdf'
+    selectedFile: null
   }),
   methods: {
     checkCurrentLogin () {
